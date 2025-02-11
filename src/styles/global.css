@@ -1,0 +1,6 @@
+@import "tailwindcss";  
+
+
+astro-dev-toolbar {
+    display: none !important;
+}

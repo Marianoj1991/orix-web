@@ -1,0 +1,52 @@
+---
+import { Image } from "astro:assets";
+import burguerIcon from '../assets/burguer-icon-100.png'
+
+const links = [
+    {
+        id: 1,
+        href: '/',
+        label: 'Home'
+    },
+    {
+        id: 2,
+        href: '/products',
+        label: 'Products'
+    },
+    {
+        id: 3,
+        href: '/about',
+        label: 'About'
+    },
+]
+---
+
+
+<div class="block sm:hidden">
+    <button id="menu-toggle">
+        <Image src={burguerIcon} alt='Burguer Menu Icon' width={30} height={30}/>
+    </button>
+    <div id="mobile-menu" class="hidden absolute left-0 top-[66px] bg-black text-white w-full h-[calc(100vh-66px)] z-50">
+        <ul class="h-full flex flex-col items-center justify-center gap-10">
+            {
+                links.map(link => (<a id="menu-link" href={link.href}>{link.label}</a>))
+            }
+        </ul>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const menuToggle = document.getElementById("menu-toggle");
+        const mobileMenu = document.getElementById("mobile-menu");
+        const menuLink = document.getElementById("menu-link");
+
+
+        menuToggle?.addEventListener("click", () => {
+        mobileMenu?.classList.toggle("hidden");
+        });
+        menuLink?.addEventListener('click', () => {
+            mobileMenu?.classList.toggle('hidden')
+        })
+    });
+</script>

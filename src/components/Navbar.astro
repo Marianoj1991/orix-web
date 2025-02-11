@@ -1,0 +1,45 @@
+---
+import { Image } from "astro:assets"
+import MobileMenu from "./MobileMenu.astro"
+
+const links = [
+    {
+        id: 1,
+        href: '/',
+        label: 'Home'
+    },
+    {
+        id: 2,
+        href: '/products',
+        label: 'Products'
+    },
+    {
+        id: 3,
+        href: '/about',
+        label: 'About'
+    },
+]
+---
+
+<nav class="h-16 w-full px-4 sm:px-8 md:px-16 xl:px-32 flex items-center justify-between">
+
+    <!-- LEFT -->
+    <div class="logo-title">
+        <a href="/">
+            ORIX
+
+        </a>
+    </div>
+
+    <!-- RIGHT -->
+
+    <div class="hidden sm:block">
+        <ul class="flex gap-6">
+            {
+                links.map(link => (<a href={link.href}>{link.label}</a>))
+            }
+        </ul>
+    </div>
+    <MobileMenu />
+</nav>
+<div class="h-[2px] bg-gray-100" />
