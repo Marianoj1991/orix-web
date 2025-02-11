@@ -1,5 +1,5 @@
 ---
-import { Image } from "astro:assets"
+
 import MobileMenu from "./MobileMenu.astro"
 
 const links = [
@@ -21,25 +21,22 @@ const links = [
 ]
 ---
 
-<nav class="h-16 w-full px-4 sm:px-8 md:px-16 xl:px-32 flex items-center justify-between">
-
+<nav class="bg-gray-950 text-white h-25 w-full px-4 sm:px-8 md:px-16 xl:px-32 flex items-center justify-between">
     <!-- LEFT -->
-    <div class="logo-title">
-        <a href="/">
-            ORIX
-
+    <div class="logo-title"> 
+        <a class="text-2xl" href="/">
+            ORIX CUCHILLOS
         </a>
     </div>
 
     <!-- RIGHT -->
 
     <div class="hidden sm:block">
-        <ul class="flex gap-6">
+        <ul class="flex sm:gap-4 md:gap-8 lg:gap-16 first-child">
             {
-                links.map(link => (<a href={link.href}>{link.label}</a>))
+                links.map((link, index )=> (<a class={`text-2xl py-2 px-4 ${index === 0 ? 'bg-white text-black' : ''} hover:bg-gray-600 hover:text-white rounded-md`}href={link.href}>{link.label}</a>))
             }
         </ul>
     </div>
     <MobileMenu />
 </nav>
-<div class="h-[2px] bg-gray-100" />
